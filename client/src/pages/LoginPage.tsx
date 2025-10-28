@@ -1,6 +1,6 @@
 import { Shield } from "lucide-react";
 import LoginForm from "@/components/LoginForm";
-import deloitteLogo from "@assets/stock_images/deloitte_logo_green_074e5eb4.jpg";
+import deloitteLogo from "@assets/generated_images/Deloitte_professional_logo_design_496c247a.png";
 import techBackground from "@assets/generated_images/Corporate_tech_background_pattern_4f458d68.png";
 
 export default function LoginPage() {
@@ -14,7 +14,7 @@ export default function LoginPage() {
             <img
               src={deloitteLogo}
               alt="Deloitte"
-              className="h-8 mb-6"
+              className="h-10 mb-6"
               data-testid="img-logo"
             />
             <h1 className="text-3xl font-semibold tracking-tight text-foreground">
@@ -53,10 +53,10 @@ export default function LoginPage() {
           <div className="max-w-lg space-y-6">
             <div className="space-y-4">
               <h2 className="text-4xl font-semibold leading-tight">
-                Empowering Innovation with Technology
+                Powered by Agentic AI
               </h2>
               <p className="text-lg text-primary-foreground/90 leading-relaxed">
-                Building intelligent digital solutions using cutting-edge technologies like AI, cloud computing, and data analytics to transform enterprises globally.
+                Experience the next generation of intelligent automation with autonomous AI agents that understand, reason, and execute complex workflows to transform your enterprise operations.
               </p>
             </div>
 
@@ -65,19 +65,19 @@ export default function LoginPage() {
               <div className="flex items-start gap-3">
                 <div className="mt-1 h-1.5 w-1.5 rounded-full bg-primary-foreground/80" />
                 <p className="text-sm text-primary-foreground/90">
-                  Secure access to enterprise-grade tools and platforms
+                  Autonomous agents that adapt and learn from your business context
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="mt-1 h-1.5 w-1.5 rounded-full bg-primary-foreground/80" />
                 <p className="text-sm text-primary-foreground/90">
-                  Collaborate with teams across 150+ countries
+                  Multi-step reasoning for complex decision-making workflows
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="mt-1 h-1.5 w-1.5 rounded-full bg-primary-foreground/80" />
                 <p className="text-sm text-primary-foreground/90">
-                  Real-time insights powered by advanced analytics
+                  Seamless integration with your existing enterprise systems
                 </p>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function LoginPage() {
             {/* Quote/Tagline */}
             <div className="pt-8 border-t border-primary-foreground/20">
               <p className="text-sm italic text-primary-foreground/80">
-                "Making an impact that matters through technology and innovation"
+                "Redefining what's possible with intelligent, autonomous AI agents"
               </p>
             </div>
           </div>
