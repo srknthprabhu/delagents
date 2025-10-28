@@ -1,36 +1,64 @@
 import { useState } from "react";
-import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { useLocation } from "wouter";
+import { Eye, EyeOff, Lock, Mail, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { apiRequest, queryClient } from "@/lib/queryClient";
+import type { AuthResponse } from "@shared/schema";
 
 interface LoginFormProps {
   onSubmit?: (email: string, password: string, remember: boolean) => void;
 }
 
 export default function LoginForm({ onSubmit }: LoginFormProps) {
+  const [, setLocation] = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const loginMutation = useMutation({
+    mutationFn: async (credentials: { email: string; password: string; rememberMe: boolean }) => {
+      const response = await apiRequest("POST", "/api/auth/login", credentials);
+      return await response.json() as AuthResponse;
+    },
+    onSuccess: (data) => {
+      if (data.success) {
+        queryClient.invalidateQueries({ queryKey: ["/api/auth/me"] });
+        setLocation("/dashboard");
+      } else {
+        setError(data.message || "Login failed");
+      }
+    },
+    onError: (error: any) => {
+      setError(error.message || "An error occurred during login");
+    },
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+    setError("");
     
     if (onSubmit) {
       onSubmit(email, password, rememberMe);
     } else {
-      console.log("Login submitted:", { email, password, rememberMe });
+      loginMutation.mutate({ email, password, rememberMe });
     }
-    
-    setTimeout(() => setIsLoading(false), 1500);
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" data-testid="form-login">
+      {error && (
+        <div className="flex items-center gap-2 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm" data-testid="text-error">
+          <AlertCircle className="h-4 w-4 flex-shrink-0" />
+          <span>{error}</span>
+        </div>
+      )}
+
       <div className="space-y-2">
         <Label htmlFor="email" className="text-sm font-medium">
           Email Address
@@ -108,11 +136,17 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
       <Button
         type="submit"
         className="w-full h-12 text-base font-medium"
-        disabled={isLoading}
+        disabled={loginMutation.isPending}
         data-testid="button-login"
       >
-        {isLoading ? "Signing in..." : "Sign in"}
+        {loginMutation.isPending ? "Signing in..." : "Sign in"}
       </Button>
+
+      <div className="text-center text-xs p-3 bg-muted/50 rounded-lg border border-border">
+        <p className="font-medium mb-1">Demo Credentials:</p>
+        <p className="text-muted-foreground">Email: demo@deloitte.com</p>
+        <p className="text-muted-foreground">Password: demo123</p>
+      </div>
 
       <div className="text-center text-sm text-muted-foreground">
         Need help logging in?{" "}
