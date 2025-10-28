@@ -1,0 +1,46 @@
+import React from "react";
+import DeloitteLogo from "./assets/deloitte-logo.png";
+
+export default function App() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      {/* Header */}
+      <header className="flex items-center justify-between px-8 py-4 bg-white shadow-md">
+        <div className="flex items-center space-x-3">
+          <img src={DeloitteLogo} alt="Deloitte Logo" className="h-8" />
+          <h1 className="text-xl font-semibold text-gray-800">Deloitte Tech Portal</h1>
+        </div>
+
+        <nav className="hidden md:flex space-x-6">
+          <a href="#home" className="text-gray-600 hover:text-deloitteGreen">Home</a>
+          <a href="#about" className="text-gray-600 hover:text-deloitteGreen">About</a>
+          <a href="#services" className="text-gray-600 hover:text-deloitteGreen">Services</a>
+          <a href="#contact" className="text-gray-600 hover:text-deloitteGreen">Contact</a>
+        </nav>
+
+        <button className="px-4 py-2 bg-deloitteGreen text-white rounded-lg hover:bg-green-700 transition">
+          Login
+        </button>
+      </header>
+
+      {/* Hero Section */}
+      <main className="flex-grow flex flex-col items-center justify-center text-center p-8 bg-gradient-to-br from-white to-gray-100">
+        <h2 className="text-4xl font-bold mb-4 text-gray-800">
+          Empowering Innovation with Deloitte
+        </h2>
+        <p className="text-lg text-gray-600 max-w-2xl mb-8">
+          Building intelligent digital solutions using modern technologies like React,
+          Tailwind CSS, Azure, and AI to transform your enterprise.
+        </p>
+        <button className="px-6 py-3 bg-deloitteGreen text-white rounded-lg shadow-md hover:bg-green-700 transition">
+          Get Started
+        </button>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-400 py-4 text-center">
+        <p>© {new Date().getFullYear()} Deloitte. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}
