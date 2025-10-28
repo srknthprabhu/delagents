@@ -53,10 +53,10 @@ export default function LoginPage() {
           <div className="max-w-lg space-y-6">
             <div className="space-y-4">
               <h2 className="text-4xl font-semibold leading-tight">
-                Powered by Agentic AI
+                Advanced LLM-Powered Agentic Workflows
               </h2>
               <p className="text-lg text-primary-foreground/90 leading-relaxed">
-                Experience the next generation of intelligent automation with autonomous AI agents that understand, reason, and execute complex workflows to transform your enterprise operations.
+                Harness the power of state-of-the-art Large Language Models orchestrated through intelligent agentic workflows that autonomously plan, execute, and optimize complex business processes with human-level reasoning.
               </p>
             </div>
 
@@ -65,19 +65,19 @@ export default function LoginPage() {
               <div className="flex items-start gap-3">
                 <div className="mt-1 h-1.5 w-1.5 rounded-full bg-primary-foreground/80" />
                 <p className="text-sm text-primary-foreground/90">
-                  Autonomous agents that adapt and learn from your business context
+                  Multi-model LLM orchestration with GPT-4, Claude, and custom enterprise models
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="mt-1 h-1.5 w-1.5 rounded-full bg-primary-foreground/80" />
                 <p className="text-sm text-primary-foreground/90">
-                  Multi-step reasoning for complex decision-making workflows
+                  Self-directed agents that decompose tasks, execute workflows, and self-correct
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="mt-1 h-1.5 w-1.5 rounded-full bg-primary-foreground/80" />
                 <p className="text-sm text-primary-foreground/90">
-                  Seamless integration with your existing enterprise systems
+                  Context-aware reasoning with retrieval-augmented generation and memory systems
                 </p>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function LoginPage() {
             {/* Quote/Tagline */}
             <div className="pt-8 border-t border-primary-foreground/20">
               <p className="text-sm italic text-primary-foreground/80">
-                "Redefining what's possible with intelligent, autonomous AI agents"
+                "Transforming enterprises through intelligent LLM agents that think, plan, and act"
               </p>
             </div>
           </div>
